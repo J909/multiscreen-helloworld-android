@@ -46,6 +46,7 @@ public class BleManager {
                 startScan();
             } else if (btState == BluetoothAdapter.STATE_OFF){
                 mBtOn = false;
+                stopScan();
             }
         }
     };
@@ -65,7 +66,7 @@ public class BleManager {
     }
 
     private void startScan() {
-        if(!isScanning) {
+        if(mBtOn && !isScanning) {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -76,6 +77,12 @@ public class BleManager {
             isScanning = true;
             mBluetoothAdapter.startLeScan(mScanCallback);
         }
+    }
+
+    private void stopScan() {
+        mHandler.removeCallbacksAndMessages(null);
+        isScanning = false;
+        mBluetoothAdapter.stopLeScan(mScanCallback);
     }
 
     public boolean init(final Context context) {
