@@ -2,6 +2,8 @@ package com.samsung.multiscreen.msf20.helloworld;
 
 import android.app.Application;
 
+import com.samsung.multiscreen.msf20.ble.BleManager;
+
 /**
  * @author plin
  *
@@ -30,6 +32,8 @@ public class App extends Application {
         config = Config.newInstance(this);
 
         msHelloWorld = HelloWorldWebApplicationHelper.getInstance(this);
+
+        BleManager.getInstance(this).init(this);
     }
 
     public Config getConfig() {

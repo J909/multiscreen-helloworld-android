@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.samsung.multiscreen.msf20.helloworld"
-        minSdkVersion 11
+        minSdkVersion 18
         targetSdkVersion 19
     }
 
